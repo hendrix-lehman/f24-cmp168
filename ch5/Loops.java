@@ -32,6 +32,27 @@ class Loops {
       System.out.println(number);
     }
 
+    // break statement
+    System.out.println("-------------------- break statement -------------------");
+    for (int j = 0; j < 5; j++) {
+      if (j == 3) {
+        break;
+      }
+      System.out.println(j);
+    }
+
+    // continue statement
+    System.out.println("-------------------- continue statement -------------------");
+    for (int j = 0; j < 5; j++) {
+      if (j == 3) {
+        continue; // continue to the next iteration. skip the rest of the code
+        // System.out.println("This will not be printed");
+      }
+      System.out.println(j);
+    }
+
+    System.out.println("done");
+
 
   }
 }
