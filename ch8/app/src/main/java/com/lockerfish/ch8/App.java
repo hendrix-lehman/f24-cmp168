@@ -9,19 +9,25 @@ public class App {
 
     // creating an instance of the class House
     House house = new House();
+    System.out.println("House: " + house);
+    House house2 = new House();
+    System.out.println("House2: " + house2);
+
+    boolean areTheyEqual = house.equals(new String("hello"));
+    System.out.println("Are they equal? " + areTheyEqual);
 
     // the toString() method is inherited from the Object class
-    String stringRepresentationOfThisObject = house.toString();
-    System.out.println("Representation: " + stringRepresentationOfThisObject);
+    // String stringRepresentationOfThisObject = house.toString();
 
-    // same as the hashCode() method. It is inherited from the Object class
-    System.out.println("Hash code: " + house.hashCode());
+    // System.out.println("Representation: " + stringRepresentationOfThisObject);
 
-    house.paint("yellow");
-
-    // print house color
-    System.out.println("House color: " + house.getColor());
-
+    // // same as the hashCode() method. It is inherited from the Object class
+    // System.out.println("Hash code: " + house.hashCode());
+    //
+    // house.paint("yellow");
+    //
+    // // print house color
+    // System.out.println("House color: " + house.getColor());
 
   }
 }

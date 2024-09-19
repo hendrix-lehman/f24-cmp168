@@ -38,6 +38,32 @@ class House {
     System.out.println("Lights up for the night");
   }
 
+  // @Override
+  // public String toString() {
+  // System.out.println(super.toString());
+  // return "123hello";
+  // }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    if (this == obj) {
+      return true;
+    }
+    // here we can compare the attributes of the two objects
+
+    if (obj instanceof House) {
+
+      // House that = (House) obj; // casting the object to a House object
+      // if (this.color.equals(that.color)) {
+      // return true;
+      // }
+    }
+    return true;
+  }
+
   // operation
   public void paint(String color) {
     if (color.equals("red")) {
