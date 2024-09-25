@@ -7,14 +7,42 @@ public class App {
 
   public static void main(String[] args) {
 
+    // to create an instance of the class Passenger
+    // we need to use the keyword 'new' followed by the name of the class
+    Passenger passenger = new Passenger(/* no parameters here */);
+    // notice that I didn't pass any parameters to the constructor
+    // that's because I am using the default constructor
+
+    // so now I have two ways to create an instance of the class Passenger
+    // either by using the default constructor
+    // or by using the overloaded constructor
+    Passenger passenger2 = new Passenger("Jane Doe", 1);
+
+    Passenger passenger3 = new Passenger("Jane Doe");
+    passenger3.changeSeatNumber(1);
+
+    boolean areTheyEqual = passenger2.equals(passenger3);
+    System.out.println("are the equal? " + areTheyEqual);
+
+    passenger.changeSeatNumber(2);
+    passenger2.changeSeatNumber(3);
+
+    // System.out.println("Hello");
+    areTheyEqual = passenger.equals(passenger2);
+    System.out.println("Are they equal? " + areTheyEqual);
+
+    System.out.println("Passenger: " + passenger);
+    System.out.println("Passenger2: " + passenger2);
+    System.out.println("Passenger3: " + passenger3);
+
     // creating an instance of the class House
     House house = new House();
-    System.out.println("House: " + house);
-    House house2 = new House();
-    System.out.println("House2: " + house2);
-
-    boolean areTheyEqual = house.equals(new String("hello"));
-    System.out.println("Are they equal? " + areTheyEqual);
+    // System.out.println("House: " + house);
+    // House house2 = new House();
+    // System.out.println("House2: " + house2);
+    //
+    // boolean areTheyEqual = house.equals(new String("hello"));
+    // System.out.println("Are they equal? " + areTheyEqual);
 
     // the toString() method is inherited from the Object class
     // String stringRepresentationOfThisObject = house.toString();
