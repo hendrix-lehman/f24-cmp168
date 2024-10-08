@@ -5,23 +5,44 @@ package com.lockerfish.ch9;
 
 public class App {
 
+  public void driveCar(Car car) {
+    car.drive();
+  }
+
+  public void honkHorn(Car car) {
+    car.honkHorn();
+  }
+
+  public void printCarDetails(Car car) {
+    System.out.println("Number of doors: " + car.getNumberOfDoors());
+    System.out.println("Is electric: " + car.getIsElectric());
+    System.out.println("Color: " + car.getColor());
+  }
+
   public static void main(String[] args) {
 
-    MyArrayList list = new MyArrayList(2);
-    list.add(new Box(1, 2, 3));
-    System.out.println("list.size(): " + list.size());
-    list.add(new Box(4, 5, 6));
-    System.out.println("list.size(): " + list.size());
-    list.add(new Box(7, 8, 9));
-    System.out.println("list.size(): " + list.size());
+    App app = new App();
 
-    MyArrayList list2 = new MyArrayList(2);
-    list2.addAll(list);
+    // abstract class demo
+    // we cannot create an instance of an abstract class
+    // Car car = new Car();
 
-    list2.removeAll();
-    for (int i = 0; i < list2.size(); i++) {
-      System.out.println(list2.get(i));
-    }
-    System.out.println("list2.size(): " + list2.size());
+    // however, we can create an instance of a class that extends an abstract class
+    Honda honda = new Honda();
+    honda.setColor("green");
+
+    // we can call the methods of the abstract class
+    System.out.println("Number of doors: " + honda.getNumberOfDoors());
+
+    Mercedes mercedes = new Mercedes();
+    mercedes.setColor("black");
+
+    app.printCarDetails(honda);
+    app.driveCar(honda);
+    app.honkHorn(honda);
+
+    app.printCarDetails(mercedes);
+    app.driveCar(mercedes);
+    app.honkHorn(mercedes);
   }
 }
