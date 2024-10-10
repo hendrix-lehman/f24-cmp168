@@ -2,6 +2,10 @@ package com.lockerfish.ch10;
 
 public class MyCoolHonda extends Honda implements WheelsInterface, TintInterface {
 
+  public MyCoolHonda(int vin) {
+    super(vin);
+  }
+
   @Override
   public void start() {
     System.out.println("MyCoolHonda starting");

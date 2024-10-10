@@ -13,11 +13,14 @@ public class App {
 
     App app = new App();
 
-    Honda honda = new Honda();
+    Honda honda = new Honda(1234);
 
     app.startVehicle(honda);
 
-    MyCoolHonda myCoolHonda = new MyCoolHonda();
+    MyCoolHonda myCoolHonda = new MyCoolHonda(5678);
+
+    int compare = myCoolHonda.compareTo(myCoolHonda);
+    System.out.println("compare: " + compare);
 
   }
 }
