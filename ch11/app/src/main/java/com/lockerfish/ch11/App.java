@@ -7,30 +7,47 @@ public class App {
 
   private int count;
 
-  public int calculateTotal(int value) {
-    try {
-      return value / count;
-    } catch (ArithmeticException e) {
-      // This is like saying... I don't know what to do with this exception
-      // so I'm going to throw a new exception with a message that is more
-      // meaningful to the user.
-      // Let the caller of this method handle the exception.
-      throw new ArithmeticException(
-          "We found a problem with this calculation. AAAA Please make sure to use the correct values.");
-    }
+  public int calculateTotal(int value) throws ArithmeticException {
+    // try {
+    return value / count;
+    // } catch (ArithmeticException e) {
+    // This is like saying... I don't know what to do with this exception
+    // so I'm going to throw a new exception with a message that is more
+    // meaningful to the user.
+    // Let the caller of this method handle the exception.
+    // throw new ArithmeticException(
+    // "We found a problem with this calculation. AAAA Please make sure to use the
+    // correct values.");
+    // }
   }
 
   public static void main(String[] args) {
 
     App app = new App();
     try {
+      // inside a try block
+      // risky code that might throw an exception
       int total = app.calculateTotal(10);
       System.out.println("Total: " + total);
 
-    } catch (ArithmeticException e) {
-      System.out.println(e.getMessage());
+      // the order of catch blocks is important
+      // the first catch block that matches the exception is executed
+      // subsequent catch blocks are ignored if the first catch block matches the
+      // exception
+    } catch (ArithmeticException e) { // exception is handled here
+      // log the exception
+      // System.out.println(e.getMessage());
 
       // recover by asking the user to enter a new value
+    } catch (Exception e) {
+      System.out.println("An exception occurred: " + e.getMessage());
+    } finally {
+      // this block is used to clean up or release resources not longer needed
+      // because this block always runs, it is guaranteed to close the resources
+      // if you do it in the finally block
+      System.out.println("This is the finally block.");
     }
+
+    System.out.println("Program ends successfully.");
   }
 }
