@@ -7,18 +7,19 @@ public class App {
 
   private int count;
 
-  public int calculateTotal(int value) throws ArithmeticException {
-    // try {
-    return value / count;
-    // } catch (ArithmeticException e) {
-    // This is like saying... I don't know what to do with this exception
-    // so I'm going to throw a new exception with a message that is more
-    // meaningful to the user.
-    // Let the caller of this method handle the exception.
-    // throw new ArithmeticException(
-    // "We found a problem with this calculation. AAAA Please make sure to use the
-    // correct values.");
-    // }
+  public int calculateTotal(int value) throws AppException {
+    try {
+      return value / count;
+    } catch (ArithmeticException e) {
+      throw new AppException("We found a problem with this calculation. Please make sure to use the correct values.");
+      // This is like saying... I don't know what to do with this exception
+      // so I'm going to throw a new exception with a message that is more
+      // meaningful to the user.
+      // Let the caller of this method handle the exception.
+      // throw new ArithmeticException(
+      // "We found a problem with this calculation. AAAA Please make sure to use the
+      // correct values.");
+    }
   }
 
   public static void main(String[] args) {
@@ -34,9 +35,10 @@ public class App {
       // the first catch block that matches the exception is executed
       // subsequent catch blocks are ignored if the first catch block matches the
       // exception
-    } catch (ArithmeticException e) { // exception is handled here
+    } catch (AppException e) { // exception is handled here
       // log the exception
       // System.out.println(e.getMessage());
+      System.out.println("APP+EXCEPTION: " + e.getMessage());
 
       // recover by asking the user to enter a new value
     } catch (Exception e) {
