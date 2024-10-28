@@ -3,28 +3,24 @@
  */
 package com.lockerfish.hw6;
 
-import java.io.FileReader;
+import java.util.Scanner;
 
 public class App {
 
+  public String promptUser(String prompt) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print(prompt);
+    String input = scanner.nextLine();
+    System.out.println("You entered: " + input);
+    // return scanner.nextLine();
+    return input;
+  }
+
   public static void main(String[] args) {
 
-    FileReader fr = null;
-    try {
-      // dangereous code here
-      fr = new FileReader("test.txt");
+    App app = new App();
+    String name = app.promptUser("What is your name? ");
+    System.out.println("Hello, " + name + ", nice to meet you!");
 
-    } catch (Exception e) {
-      e.printStackTrace();
-      // more dangerous code here
-    } finally {
-      if (fr != null) {
-        try {
-          fr.close();
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-    }
   }
 }
