@@ -4,22 +4,54 @@
 package com.lockerfish.ch12;
 
 import java.io.File;
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
 
 public class App {
 
-  public static void main(String[] args) {
-    File file = new File("bin/main");
-    System.out.println(file.getAbsolutePath());
-    String[] files = file.list();
-    for (String f : files) {
+  public void printChildren(File file) {
+    // get me a list of files and directories within "bin/main"
+    String[] files = file.list() == null ? new String[0] : file.list();
+    for (String f : files) { // loop each item in the array
       System.out.println(f);
-      while (new File(file.getAbsolutePath() + "/" + f).isDirectory()) {
-        String[] subFiles = new File(file.getAbsolutePath() + "/" + f).list();
-        for (String sf : subFiles) {
-          System.out.println("  " + sf);
-        }
-        break;
+      File next = new File(file.getAbsolutePath() + "/" + f);
+      if (next.isDirectory()) {
+        printChildren(next);
       }
     }
+  }
+
+  public static void main(String[] args) {
+    App app = new App();
+    // we are creating a File typed object in the variable "file"
+    File file = new File("bin/data.txt");
+    PrintWriter outStream = null;// notice this is not inside the try block
+
+    // printing the absolute path to the directory "bin"
+    // /home/hendrix/teaching/fall24/cmp168/ch12/app/bin/main
+    System.out.println(file.getAbsolutePath());
+    if (file.exists()) {
+      app.printChildren(file);
+    } else {
+      System.out.println("file does not exists, creating it");
+    }
+
+    try {
+      file.createNewFile();
+
+      outStream = new PrintWriter(new FileOutputStream(file, true));
+
+      // outStream = new PrintWriter(file);// create and connect to a new empty file
+      outStream.println("hello");// write text to the file
+
+    } catch (Exception e) {
+      System.out.println("ERROR: " + e.getMessage());
+
+    } finally {
+      if (outStream != null) {
+        outStream.close();// close the stream and release resources
+      }
+    }
+
   }
 }

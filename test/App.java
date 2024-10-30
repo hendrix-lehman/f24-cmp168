@@ -11,13 +11,13 @@ public class App {
   }
 
   public String capitalize(String word) {
-    //hello
+    // hello
     // [h, e, l, l, o]
-    String firstLetter = word.substring(/*from index?*/0, /* to index? */ 1);
-    //H
+    String firstLetter = word.substring(/* from index? */0, /* to index? */ 1);
+    // H
     String firstLetterCapitalized = firstLetter.toUpperCase();
     // ello
-    String restOfWord = word.substring(/*/from index */ 1, /* to index */ word.length());
+    String restOfWord = word.substring(/* /from index */ 1, /* to index */ word.length());
     // Hello
     String capitalizedWord = firstLetterCapitalized + restOfWord;
     return capitalizedWord;
@@ -28,17 +28,18 @@ public class App {
     return sentence.replaceAll("\\s+", " ");
   }
 
-/*
-Capitalize the first letter in the file
-and capitalize the 1st letter after every period 
-and correct the spacing by removing any duplicate spaces so that there is only 1 space between words.
-  */
+  /*
+   * Capitalize the first letter in the file
+   * and capitalize the 1st letter after every period
+   * and correct the spacing by removing any duplicate spaces so that there is
+   * only 1 space between words.
+   */
 
   public static void main(String[] args) {
 
     App app = new App();
     String weather = app.promptUser("How is the weather? ");
-    while(true) {
+    while (true) {
       if (weather.equals("rainy")) {
         System.out.println("Take an umbrella!");
         break;
